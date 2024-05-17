@@ -1,0 +1,15 @@
+Installation Guide
+1. Run docker images for mysql and postgres
+2. Load databases table using provided sql files. Use proper port number from docker container. For e.g.
+    a. mysql -u root -p -h 0.0.0.0 -P 55008 mt-mysql < init.mysql.sql
+    b. psql -U user -d mt-pg -h localhost -p 55006 -f init.pg.sql -W
+3. Update config.py with AWS, mysql, postgres and Email credentials.
+4. Create a virtual environment using requirements.txt
+5. run: python sol.py
+
+
+Design
+1. Added utilities package to keep helper code like send email, source and target databases. It will be easier add/modify these library. It won't affect business logic in sol.py.
+2. Added code in sol.py in separate functions.
+3. Added error handelling.
+4. In case file is not uploaded to S3, its written on disk.
